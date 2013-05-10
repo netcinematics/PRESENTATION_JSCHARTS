@@ -28,7 +28,7 @@
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
-		
+	
 		<style>
 			.subtext{
 				font-size: .6em !important;
@@ -37,6 +37,10 @@
 				bottom: -100px !important;
 				border-top: 1px solid #bbb !important;
 				padding-top: 10px !important;
+			}
+			.smalltext{
+				font-size: .6em !important;
+				font-style: italic !important;
 			}
 		</style>
 		
@@ -65,16 +69,78 @@
 					</p>
 				</section>
 
+				<section id="slideWordCloud">
+					<h4>JS ~ Rich Chart Family</h4>
+    				
+    <div id="myCanvasContainer">
+      <canvas width="600" height="400" id="myCanvas" style="border: 1px solid #AAA;">
+        <p>Your browser does not support HTML5. : (</p>
+      </canvas>
+    </div>
+    <div id="tags">
+      <ul>
+        <li><a href="http://www.sencha.com/products/extjs/examples/">ExtJS Charts</a></li>
+        <li><a href="http://g.raphaeljs.com/">gRaphael</a></li>   
+        <li><a href="http://www.amcharts.com/javascript-charts/stacked-bar/">amCharts</a></li>   
+        <li><a href="http://www.rgraph.net/examples/index.html">RGraph</a></li>
+        <li><a href="http://www.canvasjs.com">Canvas JS</a></li>
+        <li><a href="http://elycharts.com/examples">elyCharts</a></li>
+        <li><a href="http://smoothiecharts.org/">Smoothie</a></li>
+        <li><a href="http://cyberpython.github.io/AwesomeChartJS/">AwesomeCharts</a></li>
+        <li><a href="http://www.humblesoftware.com/flotr2/">flotr2</a></li>
+        <li><a href="http://www.flotcharts.org/">flot</a></li>
+        <li><a href="http://www.simile-widgets.org/timeplot/examples/energy/index.html">TimePlot</a></li>
+        <li><a href="http://www.simile-widgets.org/timeline/">Timeline</a></li>
+        <li><a href="http://xaviershay.github.io/tufte-graph/">TufteGraph</a></li>
+        <li><a href="http://omnipotent.net/jquery.sparkline/#s-about">Sparklines</a></li>
+        <li><a href="http://www.jqplot.com/">jqPlot</a></li>
+        <li><a href="http://bluff.jcoglan.com/">Bluff</a></li>
+        <li><a href="http://jsxgraph.uni-bayreuth.de/wiki/index.php/Category:Examples">jsxgraphs</a></li>
+        <li><a href="http://dygraphs.com/">dygraphs</a></li>
+        <li><a href="http://www.filamentgroup.com/examples/jqueryui-visualize/">Visualize</a></li>
+        <li><a href="http://www.jscharts.com/examples">JSCharts</a></li>
+        <li><a href="http://www.chartjs.org/">Chart.js</a></li>
+        <li><a href="http://philogb.github.io/philogl/">PhiloGL</a></li>
+        <li><a href="http://philogb.github.io/jit/">InfoVis</a></li>
+        <li><a href="http://www.highcharts.com/">HighCharts</a></li>
+        <li><a href="http://mbostock.github.io/protovis/">Protovis</a></li>		
+        <li><a href="http://d3js.org/">D3</a></li>
+        <li><a href="http://nickqizhu.github.io/dc.js/">DC</a></li>
+      </ul>
+    </div>
+	<div class="smalltext">Click Title For Examples.</div>
+	<hr>
+	<div class="smalltext">
+		
+		<a href="http://www.goat1000.com/tagcanvas.php">tagcanvas.js</a><span> ~ Or ~ <span>
+		<a href="https://github.com/JSRenaissance/PROJECT_TAGCLOUD">GitHub</a>
+		</span>
+	</div>	
+	<hr>
+				</section>
+				
 				<section>
-					<h2>Heads Up</h2>
+					<h2>I find this beautiful...</h2>
 					<p>
-						reveal.js is a framework for easily creating beautiful presentations using HTML. You'll need a browser with
-						support for CSS 3D transforms to see it in its full glory.
 					</p>
-
-					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-					</aside>
+					<div class="subtext fragment">Maybe you do to?</div>
+				</section>
+				
+				<section>
+					<h2>Data Visualization ~ an emerging <em>art</em>.</h2>
+					<div class="subtext fragment">Maybe an ecosystem?</div>
+				</section>
+				
+				<section>
+					<h2>Overview:</h2>
+					<p>Three steps to get started with Rich JS Charts:</p>
+					<ol>
+						<li class="fragment">See it.</li>
+						<li class="fragment">Git it.</li>
+						<li class="fragment">Blend it.</li>
+					</ol>
+					<div class="subtext fragment">We will see how to do this, tonight.</div><div class="subtext fragment">And maybe begin a journey into the fourth step ~ "Adapt it back".</div>
+					
 				</section>
 				
 				<section>
@@ -463,6 +529,40 @@ function linkify( selector ) {
 			});
 
 		</script>
+		<script>
+			Reveal.addEventListener( 'ready', function( event ) {
+				// event.currentSlide, event.indexh, event.indexv				
+				if(event.currentSlide.id==="slideWordCloud"){
+					loadWordCloud();
+				}
+			} );			
+		
+			Reveal.addEventListener( 'slidechanged', function( event ) {
+				if(event.currentSlide.id==="slideWordCloud"){
+					 loadWordCloud();
+				}	 
+				// event.previousSlide, event.currentSlide, event.indexh, event.indexv
+			} );		
+						
+			function loadWordCloud(){
+					 try {
+					  TagCanvas.Start('myCanvas','tags',{
+						textColour: '#000099',
+						outlineColour: '#AAA',
+						reverse: true,
+						depth: 0.8,
+						maxSpeed: 0.1
+					  });
+					} catch(e) {
+					  // something went wrong, hide the canvas container
+					  document.getElementById('myCanvasContainer').style.display = 'none';
+					}
+				}	
 
+		</script>
+		
+    <script src="./js/tagcanvas.min.js" type="text/javascript"></script>
+    
+		
 	</body>
 </html>
