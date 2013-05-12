@@ -39,7 +39,7 @@
 				padding-top: 10px !important;
 			}
 			.smalltext{
-				font-size: .6em !important;
+				font-size: .5em !important;
 				font-style: italic !important;
 			}
 		</style>
@@ -68,12 +68,44 @@
 						<small>Slides at URL: <a href="http://adaptivepatterns.net">adaptivepatterns.net/jscharts</a></small>
 					</p>
 				</section>
+				
+				
+				<section id="slideSkillsMap">
+<!-- StackedBarChart Files -->
+<link type="text/css" href="./stackChart/css/base.css" rel="stylesheet" />
+<link type="text/css" href="./stackChart/css/BarChart.css" rel="stylesheet" />
+<!--[if IE]><script language="javascript" type="text/javascript" src="../../Extras/excanvas.js"></script><![endif]-->
+<script language="javascript" type="text/javascript" src="./stackChart/jit_stackedBarDetail.js"></script>
+<script language="javascript" type="text/javascript" src="./stackChart/stackedBarDetail.js"></script>				
+<!-- End StackedBarChart -->
+<div id="container">
+<div id="left-container" style="background-color:transparent;">
+        
+        <h3>Skills Map</h3> 
+            
+        
 
+		<ul id="id-list" style="font-size:0.5em;"></ul>
+
+<div style="text-align:center; display:none;"><!--a href="example1.js">See the Example Code</a--></div>            
+</div>
+
+<div id="center-container">
+    <div id="infovis"></div>    
+</div>
+
+				</section>
+				<section>
+				<h3>For Reference...</h3>
+				<p style="font-size:0.5em;">~Original BarChart:<br /><a href="#">JIT JS</a> <br /><br />~SkillsMap:<br />For You at <a href="#">GitHub</a>!
+			</p>
+				</section>
+				
 				<section id="slideWordCloud">
-					<h4>JS ~ Rich Chart Family</h4>
+					<h4>30 Rich JS Charts</h4>
     				
     <div id="myCanvasContainer">
-      <canvas width="600" height="400" id="myCanvas" style="border: 1px solid #AAA;">
+      <canvas width="700" height="500" id="myCanvas" style="border: 1px solid #AAA;">
         <p>Your browser does not support HTML5. : (</p>
       </canvas>
     </div>
@@ -89,8 +121,8 @@
         <li><a href="http://cyberpython.github.io/AwesomeChartJS/">AwesomeCharts</a></li>
         <li><a href="http://www.humblesoftware.com/flotr2/">flotr2</a></li>
         <li><a href="http://www.flotcharts.org/">flot</a></li>
-        <li><a href="http://www.simile-widgets.org/timeplot/examples/energy/index.html">TimePlot</a></li>
-        <li><a href="http://www.simile-widgets.org/timeline/">Timeline</a></li>
+        <li><a href="http://www.simile-widgets.org/timeplot/examples/energy/index.html">TimePlotJS</a></li>
+        <li><a href="http://www.simile-widgets.org/timeline/">TimelineJS</a></li>
         <li><a href="http://xaviershay.github.io/tufte-graph/">TufteGraph</a></li>
         <li><a href="http://omnipotent.net/jquery.sparkline/#s-about">Sparklines</a></li>
         <li><a href="http://www.jqplot.com/">jqPlot</a></li>
@@ -101,7 +133,7 @@
         <li><a href="http://www.jscharts.com/examples">JSCharts</a></li>
         <li><a href="http://www.chartjs.org/">Chart.js</a></li>
         <li><a href="http://philogb.github.io/philogl/">PhiloGL</a></li>
-        <li><a href="http://philogb.github.io/jit/">InfoVis</a></li>
+        <li><a href="http://philogb.github.io/jit/">JIT</a></li>
         <li><a href="http://www.highcharts.com/">HighCharts</a></li>
         <li><a href="http://mbostock.github.io/protovis/">Protovis</a></li>		
         <li><a href="http://d3js.org/">D3</a></li>
@@ -109,14 +141,12 @@
       </ul>
     </div>
 	<div class="smalltext">Click Title For Examples.</div>
+	<div class="smalltext fragment">		
 	<hr>
-	<div class="smalltext">
-		
 		<a href="http://www.goat1000.com/tagcanvas.php">tagcanvas.js</a><span> ~ Or ~ <span>
 		<a href="https://github.com/JSRenaissance/PROJECT_TAGCLOUD">GitHub</a>
-		</span>
+	<hr>	
 	</div>	
-	<hr>
 				</section>
 				
 				<section>
@@ -446,14 +476,6 @@ function linkify( selector ) {
 					</a>
 				</section>
 
-				<section>
-					<h2>Export to PDF</h2>
-					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, below is an example that's been uploaded to SlideShare.</p>
-					<iframe id="slideshare" src="http://www.slideshare.net/slideshow/embed_code/13872948" width="455" height="356" style="margin:0;overflow:hidden;border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
-					<script>
-						document.getElementById('slideshare').attributeName = 'allowfullscreen';
-					</script>
-				</section>
 
 				<section>
 					<h2>Take a Moment</h2>
@@ -532,18 +554,26 @@ function linkify( selector ) {
 		<script>
 			Reveal.addEventListener( 'ready', function( event ) {
 				// event.currentSlide, event.indexh, event.indexv				
-				if(event.currentSlide.id==="slideWordCloud"){
+				if(event.currentSlide.id==="slideSkillsMap"){
+					loadSkillsMap();
+				}else if(event.currentSlide.id==="slideWordCloud"){
 					loadWordCloud();
 				}
 			} );			
 		
 			Reveal.addEventListener( 'slidechanged', function( event ) {
-				if(event.currentSlide.id==="slideWordCloud"){
+				if(event.currentSlide.id==="slideSkillsMap"){
+					loadSkillsMap()
+				}else if(event.currentSlide.id==="slideWordCloud"){
 					 loadWordCloud();
 				}	 
 				// event.previousSlide, event.currentSlide, event.indexh, event.indexv
 			} );		
-						
+			
+			function loadSkillsMap(){
+				init();
+			}
+			
 			function loadWordCloud(){
 					 try {
 					  TagCanvas.Start('myCanvas','tags',{
